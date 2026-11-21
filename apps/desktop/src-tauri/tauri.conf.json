@@ -1,0 +1,35 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Yu",
+  "version": "0.1.0",
+  "identifier": "com.yu.island",
+  "build": {
+    "frontendDist": "../../../ui"
+  },
+  "app": {
+    "windows": [
+      {
+        "label": "main",
+        "title": "屿",
+        "width": 820,
+        "height": 460,
+        "minWidth": 320,
+        "minHeight": 60,
+        "visible": false,
+        "transparent": true,
+        "decorations": false,
+        "skipTaskbar": true,
+        "alwaysOnTop": true,
+        "resizable": false,
+        "shadow": false
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": false,
+    "targets": "all"
+  }
+}
