@@ -1,0 +1,24 @@
+[workspace]
+resolver = "2"
+members = [
+  "crates/yu-abi",
+  "crates/yu-kernel",
+  "crates/yu-domain-island",
+  "crates/yu-domain-todo",
+  "crates/yu-domain-sensor",
+  "crates/yu-domain-occupation",
+  "crates/yu-cli",
+]
+# 桌面宿主依赖系统 WebView，云端无 GTK，故不纳入默认成员；
+# 本地构建时用 `cargo build -p yu-desktop` 单独编。
+exclude = ["apps/desktop"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+
+[workspace.dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+toml = "0.8"

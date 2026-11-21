@@ -1,0 +1,10 @@
+target/
+node_modules/
+dist/
+*.exe
+*.pdb
+*.log
+.DS_Store
+.vscode/
+.idea/
+sidecars/collector/yu-collector
