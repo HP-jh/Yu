@@ -11,16 +11,13 @@ jobs:
         run: |
           curl -fL --retry 3 -o /tmp/yu.tgz 'https://aka.doubaocdn.com/s/cnumZUnV3c'
           tar -xzf /tmp/yu.tgz --strip-components=1
-      - name: Commit and push
+      - name: Commit and push branch
         run: |
           git config user.name 'HP-jh'
           git config user.email 'HP-jh@users.noreply.github.com'
+          git checkout -B import-v02
           git add -A
-          git diff --cached --quiet || git commit -m 'feat(v0.2): 内核六模块 + 真实待办迁移 + 窗口定位 + Windows 资源层 [skip-import]'
-          git remote -v
-          git push origin HEAD:main
-      - name: Remove importer
-        run: |
-          git rm .github/workflows/import-v02.yml
-          git commit -m 'chore: 移除临时导入工作流 [skip-import]'
-          git push origin HEAD:main
+          git diff --cached --quiet || git commit -m 'feat(v0.2): 内核六模块 + 真实待办迁移 + 窗口定位 + Windows 资源层'
+          git push -f origin HEAD:refs/heads/import-v02
+      - name: Verify
+        run: git ls-remote origin refs/heads/import-v02
