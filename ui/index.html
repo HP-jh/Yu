@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>屿</title>
+<link rel="stylesheet" href="./yu.css" />
+</head>
+<body data-mode="idle" data-occupation="student">
+  <div class="noise" aria-hidden="true"></div>
+
+  <div class="stage">
+    <div class="island" id="island">
+      <div class="fan" aria-hidden="true"><i></i><i></i><i></i></div>
+
+      <button class="capsule" id="capsule" aria-label="屿">
+        <span class="ticks" aria-hidden="true"></span>
+        <span class="dot" aria-hidden="true"></span>
+        <span class="ring" aria-hidden="true"></span>
+        <span class="clock"><b id="clock">--:--</b><small id="day">--</small></span>
+        <span class="media" id="media">
+          <span class="cover" aria-hidden="true"></span>
+          <span class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+          <span class="song" id="song">未在播放</span>
+        </span>
+        <span class="right">
+          <span class="badge" id="todoBadge" hidden>0</span>
+          <span class="badge badge--notice" id="noticeBadge" hidden>0</span>
+          <span class="batt"><i id="battFill"></i></span>
+        </span>
+        <span class="sheen" aria-hidden="true"></span>
+      </button>
+
+      <div class="thread" aria-hidden="true"></div>
+
+      <div class="notices" id="notices"></div>
+
+      <div class="todo-card" id="todoCard" hidden>
+        <header><b>待办</b><span id="todoCount">0</span><button id="todoClose" aria-label="关闭">×</button></header>
+        <ul id="todoList"></ul>
+        <input id="todoInput" placeholder="回车添加一条" />
+      </div>
+
+      <section class="panel" id="panel" hidden>
+        <header class="panel__head">
+          <div><b id="panelClock">--:--</b><span id="panelDay">--</span></div>
+          <div class="tags"><span id="occTag">学生</span><span id="archTag">明·课时·一矇</span></div>
+        </header>
+        <div class="grid">
+          <article class="card card--wide"><h3>下一件事</h3><p id="nextThing">数学 · 09:40</p><div class="bars"><i style="--v:.72"></i></div></article>
+          <article class="card"><h3>专注</h3><p id="focusText">25:00</p><div class="ringbar" style="--p:.34"></div></article>
+          <article class="card"><h3>CPU</h3><p id="cpuText">--</p><div class="bars"><i id="cpuBar" style="--v:.2"></i></div></article>
+          <article class="card"><h3>内存</h3><p id="memText">--</p><div class="bars"><i id="memBar" style="--v:.3"></i></div></article>
+          <article class="card card--wide"><h3>媒体</h3><p id="mediaText">未在播放</p></article>
+        </div>
+        <footer class="panel__foot">
+          <button data-act="todo">待办</button>
+          <button data-act="center">中心</button>
+          <button data-act="collapse">收起</button>
+        </footer>
+      </section>
+
+      <section class="center" id="center" hidden>
+        <div class="center__hero"><b id="centerClock">--:--</b><span id="centerDay">--</span></div>
+        <div class="center__rings">
+          <div class="bigring" style="--p:.28"><span>CPU</span></div>
+          <div class="bigring" style="--p:.45"><span>内存</span></div>
+          <div class="bigring" style="--p:.8"><span>电量</span></div>
+        </div>
+        <div class="center__grid" id="centerGrid"></div>
+        <button class="center__close" id="centerClose">收起</button>
+      </section>
+    </div>
+  </div>
+
+  <div class="dock" id="dock" aria-label="演示控制">
+    <button data-mode="idle">待机</button>
+    <button data-mode="media">媒体</button>
+    <button data-mode="notice">通知</button>
+    <button data-mode="focus">专注</button>
+    <button data-mode="alert">告警</button>
+    <button data-mode="occupation">职业</button>
+    <span class="sep"></span>
+    <span id="arch">明·课时·一矇</span>
+    <span class="sep"></span>
+    <button data-occ="student">学生</button>
+    <button data-occ="developer">开发者</button>
+    <button data-occ="teacher">教师</button>
+  </div>
+
+  <script src="./yu.js"></script>
+</body>
+</html>
