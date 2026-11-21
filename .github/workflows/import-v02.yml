@@ -1,0 +1,26 @@
+name: import-v02
+on: push
+permissions:
+  contents: write
+jobs:
+  import:
+    if: ${{ !contains(github.event.head_commit.message, '[skip-import]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch source bundle
+        run: |
+          curl -fL --retry 3 -o /tmp/yu.tgz 'https://aka.doubaocdn.com/s/cnumZUnV3c'
+          tar -xzf /tmp/yu.tgz --strip-components=1
+      - name: Commit and push
+        run: |
+          git config user.name 'HP-jh'
+          git config user.email 'HP-jh@users.noreply.github.com'
+          git add -A
+          git diff --cached --quiet || git commit -m 'feat(v0.2): 内核六模块 + 真实待办迁移 + 窗口定位 + Windows 资源层 [skip-import]'
+          git push
+      - name: Remove importer
+        run: |
+          git rm .github/workflows/import-v02.yml
+          git commit -m 'chore: 移除临时导入工作流 [skip-import]'
+          git push
