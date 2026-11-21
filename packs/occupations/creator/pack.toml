@@ -1,0 +1,29 @@
+id = "creator"
+name = "创作者"
+version = "1.0.0"
+archetype = "ARI-A3R0I1"        # 渊·自由·一卡
+enabled_modules = ["island", "todo", "sensor", "notify", "media", "obsidian"]
+
+[capsule]
+left  = ["clock"]
+mid   = ["idea.count", "focus.ring"]
+right = ["battery", "badge.notice"]
+
+[policy]
+quiet_hours = ["09:00-12:00", "14:00-18:00"]
+interruption_budget = 2
+degrade_to = "badge"
+
+[focus]
+work = 90
+rest = 15
+long_break_every = 2
+
+[obsidian]
+daily_folder = "灵感"
+task_tag = "#创作"
+write_block = "yu"
+inbox = "inbox"
+
+[templates]
+items = ["写一个开头", "整理素材 10 条", "完成一版粗剪"]

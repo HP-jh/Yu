@@ -1,0 +1,22 @@
+id = "freelance"
+name = "自由职业"
+version = "1.0.0"
+archetype = "ARI-A1R1I2"
+enabled_modules = ["island", "todo", "sensor", "calendar", "notify", "obsidian"]
+
+[capsule]
+left  = ["clock"]
+mid   = ["project.timer"]
+right = ["badge.todo", "battery"]
+
+[policy]
+interruption_budget = 5
+degrade_to = "badge"
+
+[focus]
+work = 45
+rest = 8
+long_break_every = 3
+
+[templates]
+items = ["客户 A 交付一项", "记一笔工时", "发一封进度邮件"]

@@ -1,0 +1,23 @@
+id = "office"
+name = "办公"
+version = "1.0.0"
+archetype = "ARI-A1R2I3"
+enabled_modules = ["island", "todo", "sensor", "calendar", "notify", "media"]
+
+[capsule]
+left  = ["clock"]
+mid   = ["meeting.next"]
+right = ["badge.mail", "battery"]
+
+[policy]
+quiet_when_foreground = ["Teams.exe", "Zoom.exe"]
+interruption_budget = 6
+degrade_to = "badge"
+
+[focus]
+work = 45
+rest = 10
+long_break_every = 3
+
+[templates]
+items = ["处理邮件到 0", "准备会议三点结论", "整理会后待办"]

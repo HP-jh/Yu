@@ -1,0 +1,77 @@
+id = "student"
+name = "学生"
+version = "1.2.0"
+archetype = "ARI-A1R3I0"        # 明·课时·一矇
+enabled_modules = ["island", "todo", "sensor", "calendar", "notify", "obsidian", "media", "agents"]
+
+[capsule]
+left  = ["clock"]
+mid   = ["ritual.next", "focus.ring"]
+right = ["battery", "badge.todo", "badge.notice"]
+
+[policy]
+quiet_when_foreground = ["ClassIn.exe", "TencentMeeting.exe", "chrome.exe#fullscreen", "msedge.exe#fullscreen"]
+quiet_hours = ["08:00-11:30", "13:30-16:00"]
+interruption_budget = 3
+degrade_to = "badge"
+
+[focus]
+work = 25
+rest = 5
+long_break_every = 4
+
+[process]
+eco = "class"                    # 上课时非前台进程降 EcoQoS
+protect = ["yu.exe", "SogouIme", "WeChat.exe"]
+[[process.boost]]
+name = "ClassIn.exe"
+delta = -8
+[[process.boost]]
+name = "TencentMeeting.exe"
+delta = -8
+
+[obsidian]
+daily_folder = "日记"
+task_tag = "#作业"
+write_block = "yu"
+inbox = "inbox"
+
+[templates]
+todo = "templates/todos.md"
+review = "templates/weekly.md"
+items = [
+  "语文：山水六五（读题→列要点→作答→检查）",
+  "数学：胡老师习题一课",
+  "英语：单词 20 个 + 朗读 10 分钟",
+  "背诵：《观沧海》分段挖空",
+  "阅读：阅读课打卡 30 分钟",
+]
+
+[[ritual]]
+id = "class"
+match_time = "schedule"
+match_app = ["ClassIn.exe", "TencentMeeting.exe"]
+[ritual.guard]
+notices = "badge_only"
+motion = "freeze"
+media_cover = false
+
+[[ritual]]
+id = "break"
+gap_min = 5
+
+[[ritual]]
+id = "lunch"
+match_time = "11:50-13:20"
+
+[[ritual]]
+id = "study"
+match_time = "16:30-21:30"
+
+[[ritual]]
+id = "night"
+match_time = "21:30-06:30"
+
+[[ritual]]
+id = "holiday"
+match_time = "weekend"

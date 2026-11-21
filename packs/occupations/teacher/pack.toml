@@ -1,0 +1,40 @@
+id = "teacher"
+name = "教师"
+version = "1.0.0"
+archetype = "ARI-A1R3I1"
+enabled_modules = ["island", "todo", "sensor", "calendar", "notify", "obsidian"]
+
+[capsule]
+left  = ["clock"]
+mid   = ["ritual.next", "class.countdown"]
+right = ["badge.todo", "battery"]
+
+[policy]
+quiet_when_foreground = ["ClassIn.exe"]
+interruption_budget = 4
+degrade_to = "badge"
+
+[focus]
+work = 40
+rest = 10
+long_break_every = 2
+
+[obsidian]
+daily_folder = "教学"
+task_tag = "#批改"
+write_block = "yu"
+inbox = "inbox"
+
+[templates]
+items = [
+  "批改一个班作业",
+  "准备下一节课的讲义",
+  "记录 3 个需要关注的学生",
+]
+
+[[ritual]]
+id = "class"
+match_time = "schedule"
+[ritual.guard]
+notices = "badge_only"
+motion = "freeze"

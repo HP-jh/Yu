@@ -1,0 +1,53 @@
+id = "developer"
+name = "开发者"
+version = "1.0.0"
+archetype = "ARI-A3R2I3"        # 渊·番茄·全图
+enabled_modules = ["island", "todo", "sensor", "notify", "media", "agents", "plugins", "calendar"]
+
+[capsule]
+left  = ["clock"]
+mid   = ["agent.status", "build.status"]
+right = ["cpu.ring", "battery", "badge.notice"]
+
+[policy]
+quiet_when_foreground = ["Code.exe", "WindowsTerminal.exe", "idea64.exe"]
+interruption_budget = 8
+degrade_to = "badge"
+
+[focus]
+work = 50
+rest = 10
+long_break_every = 3
+
+[process]
+protect = ["yu.exe", "docker.exe"]
+[[process.boost]]
+name = "Code.exe"
+delta = -5
+[[process.boost]]
+name = "node.exe"
+delta = -3
+
+[obsidian]
+daily_folder = "日志"
+task_tag = "#dev"
+write_block = "yu"
+inbox = "inbox"
+
+[templates]
+items = [
+  "修一个 issue（先复现→定位→补测试）",
+  "写 changelog 一条",
+  "跑一遍 cargo clippy / pnpm lint",
+]
+
+[[ritual]]
+id = "coding"
+match_app = ["Code.exe", "WindowsTerminal.exe"]
+[ritual.guard]
+notices = "card"
+motion = "flow"
+
+[[ritual]]
+id = "night"
+match_time = "23:30-07:00"
